@@ -8,9 +8,7 @@ namespace Studmgt.Domain.Seeds
     {
 
         public virtual Guid Guid { get; set; }
-
         public string _name{ get; set; }
-
         public string _description { get; set; }
         public bool? IsActive { get; set; }
         public bool IsDeleted { get; set; }
