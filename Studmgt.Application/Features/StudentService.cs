@@ -19,9 +19,9 @@ namespace Studmgt.Application.Features
             }
             public async Task<Guid> Add(Domain.Entity.studentEntity student)
             {
-            Studmgt.Domain.Model.studentModel studentModel = student.MapToModel();
+            Studmgt.Domain.Model.Student studentModel = student.MapToModel();
             await _studRepository.AddAsync(studentModel);   
-                return studentModel.guid;
+                return studentModel.Guid;
             }
 
         //public Task<Guid> Add (studentEntity students)

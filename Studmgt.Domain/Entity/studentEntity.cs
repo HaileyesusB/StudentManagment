@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Studmgt.Domain.Entity
 {
-   public abstract class studentEntity : BaseEntity<studentModel>
+   public abstract class studentEntity : BaseEntity<Student>
     {
 
         public string adress { get; set; }
@@ -18,26 +18,26 @@ namespace Studmgt.Domain.Entity
         {
            
         }
-        public studentEntity(studentModel studentModel)
+        public studentEntity(Student studentModel)
         {
-            adress = studentModel.adress;
-            department = studentModel.department;
-            age = studentModel.age;
-            sex = studentModel.sex;
+            adress = studentModel.Adress;
+            department = studentModel.Department;
+            age = studentModel.Age;
+            sex = studentModel.Sex;
         }
 
-        public override studentModel MapToModel()
+        public override Student MapToModel()
         {
-            studentModel studModel = new studentModel();
-            studModel.adress = adress;
-            studModel.age = age;
-            studModel.department = department;
-            studModel.sex = sex;
+            Student studModel = new Student();
+            studModel.Adress = adress;
+            studModel.Age = age;
+            studModel.Department = department;
+            studModel.Sex = sex;
 
             return studModel;
         }
 
-        public override studentModel MapToModel(studentModel t)
+        public override Student MapToModel(Student t)
         {
             throw new NotImplementedException();
         }
