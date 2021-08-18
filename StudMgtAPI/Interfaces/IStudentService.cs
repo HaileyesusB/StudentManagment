@@ -1,13 +1,9 @@
 ﻿using StudMgtAPI.Dtos;
 using StudMgtAPI.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StudMgtAPI.Interfaces
-{ 
-  public  interface IStudentService
+{
+    public  interface IStudentService
 {
     public ResponseDto<Student> Get(int? id);
 

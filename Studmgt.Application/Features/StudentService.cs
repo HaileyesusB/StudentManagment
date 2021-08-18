@@ -32,27 +32,6 @@ namespace Studmgt.Application.Features
         {
             throw new NotImplementedException();
         }
-
-        //public Task UpdateOrders(Domain.Entity.studentEntity studentEntity)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Task UpdateStudentr(studentEntity order)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //Task<List<studentEntity>> IStudentService.GetByUser(string user)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //    Task<studentEntity> IStudentService.GetOrder(Guid id)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
     }
 }
 

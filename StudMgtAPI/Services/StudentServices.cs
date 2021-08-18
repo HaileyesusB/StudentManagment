@@ -25,12 +25,9 @@ namespace StudMgtAPI.Services
                          name = "Nathan",
                          adress="6 Kilo",
                          department="CS"
-
-
                      },
                      new Student
                      {
-
                          Guid=2,
                          name = "Biruk",
                          adress="5 Kilo",
