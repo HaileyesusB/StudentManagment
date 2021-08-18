@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Studmgt.Domain.Model
 {
-   public class studentModel: BaseAuditableEntity
+   public class studentModel: BaseAuditableModels
     {
      
         public  string adress { get; set; }

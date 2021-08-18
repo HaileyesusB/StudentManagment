@@ -6,15 +6,14 @@ using System.Text;
 
 namespace Studmgt.Domain.Entity
 {
-   public class studentEntity: BaseAuditableEntity
+   public abstract class studentEntity : BaseEntity<studentModel>
     {
 
         public string adress { get; set; }
         public string department { get; set; }
         public int age { get; set; }
         public string sex { get; set; }
-
-       
+    
         public studentEntity()
         {
            
@@ -34,7 +33,7 @@ namespace Studmgt.Domain.Entity
             studModel.age = age;
             studModel.department = department;
             studModel.sex = sex;
-           
+
             return studModel;
         }
 
@@ -45,4 +44,4 @@ namespace Studmgt.Domain.Entity
     }
 
 }
-}
+

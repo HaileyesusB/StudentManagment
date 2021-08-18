@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Studmgt.Domain.Seeds
 {
-  public interface IAsyncRepository<T> where T:BaseAuditableEntity
+  public interface IAsyncRepository <T> where T:BaseAuditableModels
     {
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);

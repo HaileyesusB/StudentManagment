@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Studmgt.Domain.Seeds
 {
-   public abstract class BaseEntity <T> where T: BaseAuditableEntity
+   public abstract class BaseEntity <T> where T: BaseAuditableModels
     {
 
         public virtual Guid Guid { get; set; }

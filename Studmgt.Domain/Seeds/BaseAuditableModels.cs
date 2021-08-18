@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Studmgt.Domain.Seeds
 {
-    public abstract class BaseAuditableEntity
+    public abstract class BaseAuditableModels
     {
+        public Guid guid {protected set; get;}
         public string createdBy { set; get; }
 
         public DateTime CreatedDate { set; get; }
