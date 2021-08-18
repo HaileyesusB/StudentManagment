@@ -9,10 +9,10 @@ namespace Studmgt.Domain.Entity
    public abstract class studentEntity : BaseEntity<Student>
     {
 
-        public string adress { get; set; }
-        public string department { get; set; }
-        public int age { get; set; }
-        public string sex { get; set; }
+        public string Adress { get; set; }
+        public string Department { get; set; }
+        public int Age { get; set; }
+        public string Sex { get; set; }
     
         public studentEntity()
         {
@@ -20,19 +20,19 @@ namespace Studmgt.Domain.Entity
         }
         public studentEntity(Student studentModel)
         {
-            adress = studentModel.Adress;
-            department = studentModel.Department;
-            age = studentModel.Age;
-            sex = studentModel.Sex;
+            Adress = studentModel.Adress;
+            Department = studentModel.Department;
+            Age = studentModel.Age;
+            Sex = studentModel.Sex;
         }
 
         public override Student MapToModel()
         {
             Student studModel = new Student();
-            studModel.Adress = adress;
-            studModel.Age = age;
-            studModel.Department = department;
-            studModel.Sex = sex;
+            studModel.Adress = Adress;
+            studModel.Age = Age;
+            studModel.Department = Department;
+            studModel.Sex = Sex;
 
             return studModel;
         }
