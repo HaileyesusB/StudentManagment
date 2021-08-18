@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using StudMgtAPI.Interfaces;
+using StudMgtAPI.Services;
 
 namespace StudMgtAPI
 {
@@ -32,7 +27,7 @@ namespace StudMgtAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudMgtAPI", Version = "v1" });
             });
-            
+            services.AddSingleton<IStudentService, StudentServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
