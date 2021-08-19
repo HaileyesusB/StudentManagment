@@ -1,4 +1,4 @@
-﻿using Studmgt.Domain.Seeds;
+using Studmgt.Domain.Seeds;
 
 namespace Studmgt.Domain.Model
 {

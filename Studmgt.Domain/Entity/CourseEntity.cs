@@ -1,33 +1,47 @@
-﻿using Studmgt.Domain.Model;
+using Studmgt.Domain.Model;
 using Studmgt.Domain.Seeds;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Studmgt.Domain.Entity
 {
-    public  class CourseEntity: BaseEntity<Course>
+   public abstract class studentEntity : BaseEntity<Student>
     {
-        //public string Name { get; set; }
-        public string Code { get; set; }
-        public string Location { get; set; }
-        //public string Description { get; set; }
 
-        public CourseEntity(Course course)
+        public string adress { get; set; }
+        public string department { get; set; }
+        public int age { get; set; }
+        public string sex { get; set; }
+    
+        public studentEntity()
         {
-            Code = course.Code;
-            Location = course.Location;
+           
         }
-        public override Course MapToModel()
+        public studentEntity(Student studentModel)
         {
-            Course course = new Course();
-            course.Code = Code;
-            course.Location = Location;
-            return course;
+            adress = studentModel.Adress;
+            department = studentModel.Department;
+            age = studentModel.Age;
+            sex = studentModel.Sex;
         }
 
-        public override Course MapToModel(Course t)
+        public override Student MapToModel()
         {
-            t.Code = Code;
-            t.Location = Location;
-            return t;
+            Student studModel = new Student();
+            studModel.Adress = adress;
+            studModel.Age = age;
+            studModel.Department = department;
+            studModel.Sex = sex;
+
+            return studModel;
+        }
+
+        public override Student MapToModel(Student t)
+        {
+            throw new NotImplementedException();
         }
     }
+
 }
+

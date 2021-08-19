@@ -1,4 +1,4 @@
-﻿using Studmgt.Domain.Entity;
+using Studmgt.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;

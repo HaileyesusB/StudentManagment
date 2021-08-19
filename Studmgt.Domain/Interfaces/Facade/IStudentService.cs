@@ -9,8 +9,8 @@ namespace Studmgt.Domain.Interfaces.Facade
     {
         Task<List<Entity.studentEntity>> GetAllStudents();
         Task<Guid> Add(Entity.studentEntity students);
-        Task<List<Entity.studentEntity>> GetByUser(string user);
-        Task<Entity.studentEntity> GetOrder(Guid id);
-        Task UpdateOrder(Entity.studentEntity order);
+        //Task<List<Entity.studentEntity>> GetStudent(string user);
+        Task<Entity.studentEntity> GetStudent(Guid id);
+     //   Task UpdateOrder(Entity.studentEntity order);
     }
 }
