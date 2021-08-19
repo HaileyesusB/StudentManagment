@@ -1,11 +1,8 @@
-﻿using Studmgt.Domain.Seeds;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Studmgt.Domain.Seeds;
 
 namespace Studmgt.Domain.Model
 {
-   public class Course: BaseAuditableModels
+    public class Course : BaseAuditableModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
