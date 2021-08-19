@@ -6,38 +6,32 @@ using System.Text;
 
 namespace Studmgt.Domain.Entity
 {
-   public abstract class studentEntity : BaseEntity<Student>
+   public  class CourseEntity : BaseEntity<Course>
     {
 
-        public string adress { get; set; }
-        public string department { get; set; }
-        public int age { get; set; }
-        public string sex { get; set; }
+        public string Code { get; set; }
+        public string Location { get; set; }
     
-        public studentEntity()
+        public CourseEntity()
         {
            
         }
-        public studentEntity(Student studentModel)
+        public CourseEntity(Course course)
         {
-            adress = studentModel.Adress;
-            department = studentModel.Department;
-            age = studentModel.Age;
-            sex = studentModel.Sex;
+            Code = course.Code;
+            Location = course.Location;
         }
 
-        public override Student MapToModel()
+        public override Course MapToModel()
         {
-            Student studModel = new Student();
-            studModel.Adress = adress;
-            studModel.Age = age;
-            studModel.Department = department;
-            studModel.Sex = sex;
+            Course course = new Course();
+            course.Location = Location;
+            course.Code = Code;
 
-            return studModel;
+            return course;
         }
 
-        public override Student MapToModel(Student t)
+        public override Course MapToModel(Course t)
         {
             throw new NotImplementedException();
         }
