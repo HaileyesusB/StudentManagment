@@ -9,10 +9,10 @@ namespace Studmgt.Domain.Seeds
 {
   public interface IAsyncRepository <T> where T:BaseAuditableModels
     {
-        Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
-        Task<T> GetByIdAsync(Guid id);
+        Task<T>  AddAsync(T entity);
+        bool Update(T entity);
+        bool Delete(int Id);
+        Task<T> GetByIdAsync(int id);
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);
         IQueryable<T> GetQueryAsync(Expression<Func<T, bool>> predicate);

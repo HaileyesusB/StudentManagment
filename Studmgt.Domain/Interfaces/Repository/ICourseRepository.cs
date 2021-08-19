@@ -1,4 +1,4 @@
-﻿using Studmgt.Domain.Model;
+using Studmgt.Domain.Model;
 using Studmgt.Domain.Seeds;
 using System;
 using System.Collections.Generic;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Studmgt.Domain.Interfaces.Repository
 {
-    public interface ICourseRepository : IAsyncRepository<Course>
+   public interface ICourseRepository: IAsyncRepository<Course>
     {
-        Task<IEnumerable<Course>> GetCoursesByCourseCode(string courseCode);
+        Task<List<Course>> GetCoursesByStudentId(int stdId);
     }
 }
