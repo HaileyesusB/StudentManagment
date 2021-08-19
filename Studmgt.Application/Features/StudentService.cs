@@ -32,6 +32,23 @@ namespace Studmgt.Application.Features
         {
             throw new NotImplementedException();
         }
+
+        public async Task<Domain.Entity.studentEntity> UpdateStudent(Domain.Entity.studentEntity student)
+        {
+            Studmgt.Domain.Model.Student studentModel = student.MapToModel();
+            await _studRepository.UpdateAsync(studentModel);
+            return studentModel.Guid;
+        }
+
+        public Task<Domain.Entity.studentEntity> DeleteStudent(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Domain.Entity.studentEntity> EditStudent(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -6,11 +6,30 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Studmgt.Domain\Studmgt.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Course\Command\CreateCourse\" />
+    <Folder Include="Features\Course\Command\DeleteCourse\" />
+    <Folder Include="Features\Course\Command\UpdateCourse\" />
+    <Folder Include="Features\Course\Queries\GetCourseList\" />
+    <Folder Include="Features\Department\Command\CreateDepartment\" />
+    <Folder Include="Features\Department\Command\DeleteDepartment\" />
+    <Folder Include="Features\Department\Command\UpdateDepartment\" />
+    <Folder Include="Features\Department\Queries\GetDepartmentList\" />
+    <Folder Include="Features\Student\Command\CreateStudent\" />
+    <Folder Include="Features\Student\Command\DeleteStudent\" />
+    <Folder Include="Features\Student\Command\" />
+    <Folder Include="Features\Student\Command\UpdateStudent\" />
+    <Folder Include="Features\Student\Queries\GetStudentList\" />
+    <Folder Include="Persistence\" />
   </ItemGroup>
 
 </Project>
