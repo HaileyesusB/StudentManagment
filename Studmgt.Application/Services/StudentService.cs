@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Studmgt.Application.Common.Exceptions;
-using Studmgt.Application.Services;
 using Studmgt.Domain.Entity;
+using Studmgt.Domain.Interfaces.Facade;
 using Studmgt.Domain.Interfaces.Repository;
 using Studmgt.Domain.Model;
+using Studmgt.Domain.Seeds;
 using System;
 using System.Threading.Tasks;
 
@@ -26,23 +27,6 @@ namespace Redzone.Application.Services
             return data.Guid;
         }
 
-        public async Task DeleteOrder(Guid guid)
-        {
-            try
-            {
-                var order = await _studentRepository.GetByIdAsync(guid);
-                if(order == null)
-                    throw new NotFoundException(nameof(Student), guid);
-                await _studentRepository.DeleteAsync(order);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-                throw;
-            }
-        }
-
-        
         public async Task UpdateAsync(studentEntity studentEntity)
         {
             try
@@ -54,5 +38,23 @@ namespace Redzone.Application.Services
                 _logger.LogError($"Error Occured : {e.Message}");
             }
         }
+
+        public async Task DeleteStudent(Guid guid)
+        {
+            try
+            {
+                var student = await _studentRepository.GetByIdAsync(guid);
+                if (student == null)
+                    throw new NotFoundException(nameof(Student), guid);
+                await _studentRepository.DeleteAsync(student);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error Occured : {e.Message}");
+                throw;
+            }
+        }
+
+
     }
 }

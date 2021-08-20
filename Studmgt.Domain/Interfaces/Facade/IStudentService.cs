@@ -1,4 +1,5 @@
 ﻿using DurableTask.Core.Common;
+using Studmgt.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,18 +8,12 @@ namespace Studmgt.Domain.Interfaces.Facade
 {
     public interface IStudentService
     {
-        Task<List<Entity.studentEntity>> GetAllStudents();
-        
-        Task<Entity.studentEntity> GetStudent(Guid id);
 
-        Task<Guid> AddAsync(Entity.studentEntity students);
-
-        Task<Guid> UpdateStudent(Entity.studentEntity Student);
-
-        Task<Entity.studentEntity> DeleteStudent(Guid id);
-
-        Task EditStudent(Entity.studentEntity Student);
-
+     //  Task<IEnumerable<studentEntity>> GetStudentByUser(string userName);
+        Task<Guid> AddAsync(studentEntity studentEntity);
+        Task UpdateAsync(studentEntity studentEntity);
+        //  Task<IEnumerable<studentEntity>> GetAllStudent();
+       // Task<studentEntity> DeleteStudent(Guid guid);
 
     }
 }

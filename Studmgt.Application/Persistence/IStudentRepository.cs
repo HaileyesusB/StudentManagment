@@ -1,4 +1,5 @@
 ﻿using Studmgt.Domain.Model;
+using Studmgt.Domain.Seeds;
 using System;
 using System.Collections.Generic;
 using System.Text;
