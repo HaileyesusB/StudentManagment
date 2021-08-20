@@ -29,7 +29,6 @@
     <Folder Include="Features\Student\Command\" />
     <Folder Include="Features\Student\Command\UpdateStudent\" />
     <Folder Include="Features\Student\Queries\GetStudentList\" />
-    <Folder Include="Persistence\" />
   </ItemGroup>
 
 </Project>
