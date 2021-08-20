@@ -10,9 +10,7 @@ namespace Studmgt.Domain.Interfaces.Repository
  
         public interface IStudentRepository : IAsyncRepository<Student>
         {
-        Task<IEnumerable<Student>> GetStudentsByName(string userName);
-
-        Task<IEnumerable<Student>> GetStudentById(string id);
+        Task<IEnumerable<Student>> GetOrdersByUserName(string userName);
 
     }
     }

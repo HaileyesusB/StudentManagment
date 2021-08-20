@@ -28,17 +28,17 @@ namespace Redzone.Application.Services
             return data.Guid;
         }
 
-        //public async Task UpdateAsync(studentEntity studentEntity)
-        //{
-        //    try
-        //    {
-        //        await _studentRepository.UpdateAsync(studentEntity.MapToModel());
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        _logger.LogError($"Error Occured : {e.Message}");
-        //    }
-        //}
+        public async Task UpdateAsync(studentEntity studentEntity)
+        {
+            try
+            {
+                await _studentRepository.UpdateAsync(studentEntity.MapToModel());
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error Occured : {e.Message}");
+            }
+        }
 
         public async Task DeleteStudent(Guid guid)
         {
@@ -47,7 +47,7 @@ namespace Redzone.Application.Services
                 var student = await _studentRepository.GetByIdAsync(guid);
                 if (student == null)
                     throw new NotFoundException(nameof(Student), guid);
-                await _studentRepository.DeleteAsync(student);
+                await _studentRepository.Delete(student);
             }
             catch (Exception e)
             {
@@ -59,14 +59,10 @@ namespace Redzone.Application.Services
         public Task<studentEntity> UpdateStudent(studentEntity student)
         {
             Student studentModel = student.MapToModel();
+
             return (Task<studentEntity>)_studentRepository.UpdateAsync(studentModel);
         }
 
-        public async Task<IEnumerable<studentEntity>> GetOrderByUser(studentEntity request)
-        {
-            var studentList = (await _studentRepository.GetStudentById(request.Name)).ToList();
-            return (IEnumerable<studentEntity>)studentList;
-   
-        }
+
     }
 }

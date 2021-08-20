@@ -6,7 +6,8 @@ using System.Text;
 
 namespace Studmgt.Domain.Entity
 {
-   public abstract class studentEntity : BaseEntity<Student>
+   
+   public  class studentEntity : BaseEntity<Student>
     {
 
         public string Adress { get; set; }

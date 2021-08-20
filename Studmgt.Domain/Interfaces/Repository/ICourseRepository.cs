@@ -9,6 +9,6 @@ namespace Studmgt.Domain.Interfaces.Repository
 {
    public interface ICourseRepository: IAsyncRepository<Course>
     {
-        Task<List<Course>> GetCoursesByStudentId(int stdId);
+        Task<List<Course>> GetCourseByCourseCode(string courseCode);
     }
 }

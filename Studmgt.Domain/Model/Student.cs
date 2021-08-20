@@ -7,6 +7,7 @@ namespace Studmgt.Domain.Model
 {
    public class Student: BaseAuditableModels
     {
+        public string Name { get; set; }
         public  string Adress { get; set; }
         public string Department { get; set; }
         public int Age { get; set; }

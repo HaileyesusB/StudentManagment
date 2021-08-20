@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Studmgt.Domain.Seeds;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,14 +11,14 @@ namespace Studmgt.Domain.Seeds
   public interface IAsyncRepository <T> where T:BaseAuditableModels
     {
         Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task Update(T entity); 
+        Task Delete(T entity);
         Task<T> GetByIdAsync(Guid id);
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<int> CountAsync();
         Task<IQueryable<T>> GetQueryAsync();
         Task AttachAsync(T entity);
-        Task DeleteAsync(Expression<Func<T, bool>> criteria);
+        Task Delete(Expression<Func<T, bool>> criteria); 
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> criteria);
         Task<T> FindOneAsync(Expression<Func<T, bool>> criteria);
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);

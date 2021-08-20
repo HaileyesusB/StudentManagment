@@ -8,10 +8,11 @@ namespace Studmgt.Domain.Interfaces.Facade
 {
     public interface ICourseService
     {
-        Task<List<CourseEntity>> GetAllCourseEntities();
-        // Task<CourseEntity> GetCourseEntity(int Id);
-        Task<int> Add(CourseEntity courseEntity);
-        // bool Remove(int Id);
-        //  bool UpdateCourse(CourseEntity course);
+        Task<IEnumerable<CourseEntity>> GetCourseByCode(string courseCode);   
+        Task<Guid> AddAsync(CourseEntity courseEntity);
+        Task Update(CourseEntity courseEntity);
+        Task<CourseEntity> GetByIdAsync(Guid guid);
+        Task<IEnumerable<CourseEntity>> GetAllCourses();
+        Task DeleteCourse(Guid guid);
     }
 }
