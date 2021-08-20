@@ -55,6 +55,13 @@ namespace Redzone.Application.Services
             }
         }
 
+        public Task<studentEntity> UpdateStudent(studentEntity student)
+        {
+            Student studentModel = student.MapToModel();
+
+            return (Task<studentEntity>)_studentRepository.UpdateAsync(studentModel);
+        }
+
 
     }
 }

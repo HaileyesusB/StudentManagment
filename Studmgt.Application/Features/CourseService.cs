@@ -5,7 +5,6 @@ using Studmgt.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Studmgt.Application.Features
@@ -17,34 +16,36 @@ namespace Studmgt.Application.Features
         {
             _courseRepository = courseRepository;
         }
-        public async Task<int>  Add(CourseEntity courseEntity)
+        public async Task<int> Add(CourseEntity courseEntity)
         {
             Course course = courseEntity.MapToModel();
-             await _courseRepository.AddAsync(course);
+            await _courseRepository.AddAsync(course);
             return course.Id;
         }
 
         public async Task<List<CourseEntity>> GetAllCourseEntities()
         {
-          var data = await _courseRepository.GetAllAsync();
+            var data = await _courseRepository.GetAllAsync();
             return data?.Select(x => new CourseEntity(x)).ToList();
         }
 
-        public async Task<CourseEntity> GetCourseEntity(int Id)
+        public async Task<CourseEntity> GetCourseEntity(Guid Id)
         {
             Course course = await _courseRepository.GetByIdAsync(Id);
             return new CourseEntity(course);
         }
 
-        public bool Remove(int Id)
+        public Task<CourseEntity> Remove(Course course)
         {
-            return _courseRepository.Delete(Id);
+            return (Task<CourseEntity>)_courseRepository.DeleteAsync(course);
         }
 
-        public bool UpdateCourse(CourseEntity courseEntity)
+        public Task<CourseEntity> UpdateCourse(CourseEntity courseEntity)
         {
-            Course course = courseEntity.MapToModel();
-            return _courseRepository.Update(course);
+            Course courceModel = courseEntity.MapToModel();
+
+            return (Task<CourseEntity>)_courseRepository.UpdateAsync(courceModel);
         }
     }
 }
+

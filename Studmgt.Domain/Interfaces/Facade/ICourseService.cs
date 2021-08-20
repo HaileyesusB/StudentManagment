@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Studmgt.Domain.Interfaces.Facade
 {
-   public interface ICourseService
+    public interface ICourseService
     {
         Task<List<CourseEntity>> GetAllCourseEntities();
-        Task<CourseEntity> GetCourseEntity(int Id);
+        // Task<CourseEntity> GetCourseEntity(int Id);
         Task<int> Add(CourseEntity courseEntity);
-        bool Remove(int Id);
-        bool UpdateCourse(CourseEntity course);
+        // bool Remove(int Id);
+        //  bool UpdateCourse(CourseEntity course);
     }
 }
