@@ -28,17 +28,17 @@ namespace Redzone.Application.Services
             return data.Guid;
         }
 
-        public async Task UpdateAsync(studentEntity studentEntity)
-        {
-            try
-            {
-                await _studentRepository.UpdateAsync(studentEntity.MapToModel());
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-            }
-        }
+        //public async Task UpdateAsync(studentEntity studentEntity)
+        //{
+        //    try
+        //    {
+        //        await _studentRepository.UpdateAsync(studentEntity.MapToModel());
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogError($"Error Occured : {e.Message}");
+        //    }
+        //}
 
         public async Task DeleteStudent(Guid guid)
         {
@@ -60,7 +60,7 @@ namespace Redzone.Application.Services
         {
             Student studentModel = student.MapToModel();
 
-            return (Task<studentEntity>)_studentRepository.UpdateAsync(studentModel);
+            return (Task<studentEntity>)_studentRepository.Update(studentModel);
         }
 
 

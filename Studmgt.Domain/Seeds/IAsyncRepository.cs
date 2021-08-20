@@ -22,7 +22,7 @@ namespace Studmgt.Domain.Seeds
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> criteria);
         Task<T> FindOneAsync(Expression<Func<T, bool>> criteria);
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);
-        Task<IQueryable<T>> GetOrdersByName(Expression<Func<T, bool>> predicate);
+        Task<IQueryable<T>> GetOrdersByName();
         Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
         Task<IQueryable<T>> GetQueryAsync(Expression<Func<T, bool>> predicate);
         Task<T> SingleAsync(Expression<Func<T, bool>> criteria);

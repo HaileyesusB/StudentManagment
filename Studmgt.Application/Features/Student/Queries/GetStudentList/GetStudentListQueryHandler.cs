@@ -17,7 +17,7 @@ namespace Studmgt.Application.Features.Student.Queries.GetStudentList
         }
         public async Task<List<studentEntity>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
         {
-            var studentList = await _studentRepository.GetOrdersByName(request.Name);
+            var studentList = await _studentRepository.GetOrdersByName();
             return studentList?.Select(o => new OrderEntity(o)).ToList();
 
         }
