@@ -9,6 +9,6 @@ namespace Studmgt.Domain.Interfaces.Facade
     public interface IStudentService
     {
         Task<Guid> AddAsync(studentEntity studentEntity);
-        Task UpdateAsync(studentEntity studentEntity);
+      //  Task UpdateAsync(studentEntity studentEntity);
     }
 }

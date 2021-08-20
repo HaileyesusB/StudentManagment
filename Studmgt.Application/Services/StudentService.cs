@@ -5,6 +5,8 @@ using Studmgt.Domain.Interfaces.Facade;
 using Studmgt.Domain.Interfaces.Repository;
 using Studmgt.Domain.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Redzone.Application.Services
@@ -26,17 +28,17 @@ namespace Redzone.Application.Services
             return data.Guid;
         }
 
-        public async Task UpdateAsync(studentEntity studentEntity)
-        {
-            try
-            {
-                await _studentRepository.UpdateAsync(studentEntity.MapToModel());
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-            }
-        }
+        //public async Task UpdateAsync(studentEntity studentEntity)
+        //{
+        //    try
+        //    {
+        //        await _studentRepository.UpdateAsync(studentEntity.MapToModel());
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogError($"Error Occured : {e.Message}");
+        //    }
+        //}
 
         public async Task DeleteStudent(Guid guid)
         {
@@ -57,10 +59,14 @@ namespace Redzone.Application.Services
         public Task<studentEntity> UpdateStudent(studentEntity student)
         {
             Student studentModel = student.MapToModel();
-
             return (Task<studentEntity>)_studentRepository.UpdateAsync(studentModel);
         }
 
-
+        public async Task<IEnumerable<studentEntity>> GetOrderByUser(studentEntity request)
+        {
+            var studentList = (await _studentRepository.GetStudentById(request.Name)).ToList();
+            return (IEnumerable<studentEntity>)studentList;
+   
+        }
     }
 }
