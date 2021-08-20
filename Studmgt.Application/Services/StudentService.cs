@@ -28,11 +28,11 @@ namespace Redzone.Application.Services
             return data.Guid;
         }
 
-        public async Task UpdateAsync(studentEntity studentEntity)
+        public async Task Update(studentEntity studentEntity) 
         {
             try
             {
-                await _studentRepository.UpdateAsync(studentEntity.MapToModel());
+                await _studentRepository.Update(studentEntity.MapToModel());
             }
             catch (Exception e)
             {
@@ -56,13 +56,40 @@ namespace Redzone.Application.Services
             }
         }
 
-        public Task<studentEntity> UpdateStudent(studentEntity student)
-        {
-            Student studentModel = student.MapToModel();
+        //public Task<studentEntity> UpdateStudent(studentEntity student)
+        //{
+        //    Student studentModel = student.MapToModel();
 
-            return (Task<studentEntity>)_studentRepository.UpdateAsync(studentModel);
+        //    return (Task<studentEntity>)_studentRepository.Update(studentModel);
+        //}
+
+        public async Task<IEnumerable<studentEntity>> GetAllStudents()
+        {
+            var student = await _studentRepository.GetAllAsync();
+            return student?.Select(o => new studentEntity(o)).ToList();
         }
 
+        public async Task<studentEntity> GetByIdAsync(Guid guid)
+        {
+            var course = await _studentRepository.GetByIdAsync(guid);
+            return new studentEntity(course);
+        }
 
+        public async Task<IEnumerable<studentEntity>> GetStudentByName(string studName) 
+        {
+            try
+            {
+                var course = (await _studentRepository.GetQueryAsync(x => x.Name == studName)).ToList();
+                return course?.Select(x => new studentEntity(x));
+            }
+            catch (Exception e)
+            {
+
+                _logger.LogError($"Error Occured : {e.Message}");
+                return Enumerable.Empty<studentEntity>();
+            }
+        }
+
+      
     }
 }
