@@ -40,7 +40,12 @@ namespace Studmgt.Domain.Entity
 
         public override Student MapToModel(Student t)
         {
-            throw new NotImplementedException();
+            Student studModel = t;
+            studModel.Adress = Adress;
+            studModel.Age = Age;
+            studModel.Department = Department;
+            studModel.Sex = Sex;
+            return studModel;
         }
     }
 

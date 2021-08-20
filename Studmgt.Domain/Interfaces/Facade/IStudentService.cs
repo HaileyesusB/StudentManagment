@@ -10,6 +10,10 @@ namespace Studmgt.Domain.Interfaces.Facade
     {
         Task<IEnumerable<studentEntity>> GetStudentByName(string studName); 
         Task<Guid> AddAsync(studentEntity studentEntity);
-        Task UpdateAsync(studentEntity studentEntity);
+        Task Update(studentEntity studentEntity);
+        Task<studentEntity> GetByIdAsync(Guid guid);
+        Task<IEnumerable<studentEntity>> GetAllStudents();
+        Task DeleteStudent(Guid guid); 
+
     }
 }

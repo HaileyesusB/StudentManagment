@@ -29,7 +29,7 @@ namespace Studmgt.Application.Features.Student.Command.UpdateStudent
                     throw new NotFoundException(nameof(Student), request.Guid);
                 }
                 var model = request.MapToModel(studentToUpdate);
-                await _studentRepository.UpdateAsync(model);
+                await _studentRepository.Update(model);
                 _logger.LogInformation($"Order {studentToUpdate.Guid} is successfully updated.");
                 return Unit.Value;
 

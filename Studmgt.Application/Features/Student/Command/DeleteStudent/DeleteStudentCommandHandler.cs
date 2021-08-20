@@ -26,7 +26,7 @@ namespace Studmgt.Application.Features.Student.Command.DeleteStudent
             {
                 throw new NotFoundException(nameof(Student), request.ID);
             }
-            await _studentRepository.DeleteAsync(student);
+            await _studentRepository.Delete(student);
             _logger.LogInformation($"Order {student.Guid} is successfully deleted.");
             return Unit.Value;
         }

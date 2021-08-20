@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Course\Command\UpdateCourse\**" />
+    <EmbeddedResource Remove="Features\Course\Command\UpdateCourse\**" />
+    <None Remove="Features\Course\Command\UpdateCourse\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AWSSDK.Core" Version="3.7.2.5" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
@@ -18,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Course\Command\UpdateCourse\" />
     <Folder Include="Features\Department\Command\CreateDepartment\" />
     <Folder Include="Features\Department\Command\DeleteDepartment\" />
     <Folder Include="Features\Department\Command\UpdateDepartment\" />
