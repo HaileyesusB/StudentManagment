@@ -10,7 +10,7 @@ namespace Studmgt.Domain.Entity
     {
 
         public string Code { get; set; }
-        public string Location { get; set; }
+        
     
         public CourseEntity()
         {
@@ -19,13 +19,12 @@ namespace Studmgt.Domain.Entity
         public CourseEntity(Course course)
         {
             Code = course.Code;
-            Location = course.Location;
+            
         }
 
         public override Course MapToModel()
         {
             Course course = new Course();
-            course.Location = Location;
             course.Code = Code;
 
             return course;
@@ -33,7 +32,10 @@ namespace Studmgt.Domain.Entity
 
         public override Course MapToModel(Course t)
         {
-            throw new NotImplementedException();
+            Course course = t;
+
+            course.Code = Code;
+            return course;
         }
     }
 

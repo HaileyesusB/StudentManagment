@@ -9,7 +9,7 @@ namespace Studmgt.Domain.Interfaces.Repository
 {
     public interface IDepartmentRepository: IAsyncRepository<Department>
     {
-        Task<IEnumerable<Department>> GetDepartmentsByDeptName(string deptName); 
+        Task<IEnumerable<Department>> GetDepartmentByDeptName(string deptName);  
     }
     
 }

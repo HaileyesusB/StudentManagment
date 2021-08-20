@@ -10,7 +10,7 @@ namespace Studmgt.Domain.Interfaces.Facade
     {
         Task<IEnumerable<DepartmentEntity>> GetDepartmentByName(string deptName); 
         Task<Guid> AddAsync(DepartmentEntity departmentEntity); 
-        Task UpdateAsync(DepartmentEntity departmentEntity);
+        Task Update(DepartmentEntity departmentEntity); 
         Task<DepartmentEntity> GetByIdAsync(Guid guid);
         Task<IEnumerable<DepartmentEntity>> GetAllDeparments();  
         Task DeleteDepartment(Guid guid); 
