@@ -4,7 +4,6 @@ using Studmgt.Domain.Entity;
 using Studmgt.Domain.Interfaces.Facade;
 using Studmgt.Domain.Interfaces.Repository;
 using Studmgt.Domain.Model;
-using Studmgt.Domain.Seeds;
 using System;
 using System.Threading.Tasks;
 
