@@ -2,9 +2,6 @@
 using Microsoft.Extensions.Logging;
 using Studmgt.Application.Common.Exceptions;
 using Studmgt.Domain.Interfaces.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,5 +27,6 @@ namespace Studmgt.Application.Features.Student.Command.DeleteStudent
             _logger.LogInformation($"Order {student.Guid} is successfully deleted.");
             return Unit.Value;
         }
+    
     }
 }

@@ -14,7 +14,7 @@ namespace Studmgt.Application.Features.Student.Command.CreateStudent
             private readonly ILogger<CreateStudentCommand> _logger;
             public CreateStudentCommandHandler(IStudentRepository studentRepository, ILogger<CreateStudentCommand> logger)
             {
-            _studentRepository = studentRepository ?? throw new ArgumentNullException(nameof(studentRepository));
+                _studentRepository = studentRepository ?? throw new ArgumentNullException(nameof(studentRepository));
                 _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             }
             public async Task<Guid> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
