@@ -9,6 +9,7 @@ namespace Studmgt.Application.Features.Student.Command.UpdateStudent
    
         public class UpdateStudentCommand : studentEntity, IRequest
         {
+
         }
 
     }
