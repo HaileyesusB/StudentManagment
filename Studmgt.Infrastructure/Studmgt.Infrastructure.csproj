@@ -48,4 +48,13 @@
     <ProjectReference Include="..\Studmgt.Application\Studmgt.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Studmgt.Application\Studmgt.Application.csproj" />
+  </ItemGroup>
+
 </Project>

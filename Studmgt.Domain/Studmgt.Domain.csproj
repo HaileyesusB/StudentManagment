@@ -11,4 +11,7 @@
     </PackageReference>
   </ItemGroup>
 
+    <ProjectReference Include="..\Studmgt.Infrastructure\Studmgt.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
