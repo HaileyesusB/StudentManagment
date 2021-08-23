@@ -18,8 +18,8 @@ namespace Studmgt.Application.Features.Student.Queries.GetStudentList
         }
         public async Task<List<studentEntity>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
         {
-            var studentList = await _studentRepository.GetOrdersByName(request.Name);
-            return studentList?.Select(o => new OrderEntity(o)).ToList();
+            var studentList = await _studentRepository.GetStudentByUserName(request.Name);
+            return studentList?.Select(o => new studentEntity(o)).ToList();
 
         }
     }
