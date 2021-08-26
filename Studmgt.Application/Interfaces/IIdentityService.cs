@@ -1,4 +1,4 @@
-﻿using Studmgt.Application.Models;
+﻿using MySqlX.XDevAPI.Common;
 using System.Threading.Tasks;
 
 namespace Studmgt.Application.Interfaces
