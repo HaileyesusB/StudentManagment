@@ -12,8 +12,8 @@ namespace Studmgt.Infrastructure.Repositories
 {
     public class RepositoryBase<T> : IAsyncRepository<T> where T : BaseAuditableModels
     {
-        protected readonly StudentContext _context;
-        public RepositoryBase(StudentContext context)
+        protected readonly Contexts.DbContexts _context;
+        public RepositoryBase(Contexts.DbContexts context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }

@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace Studmgt.Infrastructure.Contexts
 {
-
-
-    public class StudentContext : DbContext
+    public class DataBaseContext : DbContext
     {
-        public StudentContext(DbContextOptions<StudentContext> options) : base(options)
+        public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
         }
-
         public DbSet<Student> students { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

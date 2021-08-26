@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studmgt.Application", "Stud
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studmgt.Infrastructure", "Studmgt.Infrastructure\Studmgt.Infrastructure.csproj", "{664E235B-9F49-453E-9546-F070BB4C85C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudMgtAPI", "StudMgtAPI\StudMgtAPI.csproj", "{A3C061EC-D960-4777-A1C2-8E0F0654F7DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudMgtAPI", "StudMgtAPI\StudMgtAPI.csproj", "{A3C061EC-D960-4777-A1C2-8E0F0654F7DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudMgt.Web", "StudMgt.Web\StudMgt.Web.csproj", "{1EB520C1-902B-439B-B16D-B448D2F55790}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A3C061EC-D960-4777-A1C2-8E0F0654F7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3C061EC-D960-4777-A1C2-8E0F0654F7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3C061EC-D960-4777-A1C2-8E0F0654F7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB520C1-902B-439B-B16D-B448D2F55790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB520C1-902B-439B-B16D-B448D2F55790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB520C1-902B-439B-B16D-B448D2F55790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB520C1-902B-439B-B16D-B448D2F55790}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
