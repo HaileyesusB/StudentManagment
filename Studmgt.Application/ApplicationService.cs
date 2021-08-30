@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace Studmgt.Application
 {
-    public static class ApplicationServiceRegistration
+    public static class ApplicationService
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {

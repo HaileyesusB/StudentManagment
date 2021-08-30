@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Studmgt.Domain.Interfaces;
 
 namespace StudMgtAPI.Services
 {
@@ -21,24 +22,24 @@ namespace StudMgtAPI.Services
                   {
                      new Student
                      {
-                         Guid=1,
-                         name = "Nathan",
-                         adress="6 Kilo",
-                         department="CS"
+                         //Guid=1,
+                         //name = "Nathan",
+                         //adress="6 Kilo",
+                         //department="CS"
                      },
                      new Student
                      {
-                         Guid=2,
-                         name = "Biruk",
-                         adress="5 Kilo",
-                         department="PM"
+                         //Guid=2,
+                        // name = "Biruk",
+                         //adress="5 Kilo",
+                        // department="PM"
                      },
                      new Student
                      {
-                         Guid=3,
-                         name = "Kebede",
-                         adress="4 Kilo",
-                         department="APP"
+                         //Guid=3,
+                        // name = "Kebede",
+                        // adress="4 Kilo",
+                        // department="APP"
                      }
                   }
                 );
@@ -52,23 +53,28 @@ namespace StudMgtAPI.Services
             {
                 //variable naming
                 Student toEdit = _student.Find(x => x.Guid == student.Guid);
-                toEdit.Guid = student.Guid;
-            toEdit.name = student.name;
-            toEdit.department = student.department;
-            toEdit.age = student.age;
-            toEdit.adress = student.adress;
+                //toEdit.Guid = student.Guid;
+            //toEdit.name = student.name;
+            //toEdit.department = student.department;
+           // toEdit.age = student.age;
+           // toEdit.adress = student.adress;
                 return new ResponseDto<Student>(_student.ToList(), true);
             }
-            public ResponseDto<Student> Remove(int? id)
-            {
-                _student.Remove(_student.Find(x => x.Guid == id));
-                return new ResponseDto<Student>(_student.ToList(), true);
-            }
+            //public ResponseDto<Student> Remove(int? id)
+            //{
+            //    _student.Remove(_student.Find(x => x.Guid == id));
+            //    return new ResponseDto<Student>(_student.ToList(), true);
+            //}
 
             public ResponseDto<Student> Get(int? id)
             {
                 return new ResponseDto<Student>(_student.ToList(), true);
             }
+
+        public ResponseDto<Student> Remove(int? id)
+        {
+            throw new NotImplementedException();
         }
+    }
     }
 

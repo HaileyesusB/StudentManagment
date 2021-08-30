@@ -1,5 +1,5 @@
 ﻿using StudMgtAPI.Dtos;
-using StudMgtAPI.Model;
+using Studmgt.Domain.Model;
 
 namespace StudMgtAPI.Interfaces
 {
