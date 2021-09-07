@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Redzone.Application.Behaviours;
 using Redzone.Application.Services;
+using Studmgt.Application.Features;
 using Studmgt.Domain.Interfaces.Facade;
 using System.Reflection;
 
@@ -18,6 +19,7 @@ namespace Studmgt.Application
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ICourseService, CourseService>();
 
             return services;
         }

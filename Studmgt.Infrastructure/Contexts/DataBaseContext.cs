@@ -13,6 +13,9 @@ namespace Studmgt.Infrastructure.Contexts
         {
         }
         public DbSet<Student> students { get; set; }
+        public DbSet<Department> departments { set; get; }
+
+        public DbSet<Course> cources { set; get; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<BaseAuditableModels>())
