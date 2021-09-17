@@ -1,88 +1,51 @@
-﻿using Microsoft.Extensions.Logging;
-using Studmgt.Application.Common.Exceptions;
-using Studmgt.Domain.Entity;
-using Studmgt.Domain.Interfaces.Facade;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
+using Studmgt.Application.Dtos;
+using Studmgt.Application.Interfaces.Facade;
 using Studmgt.Domain.Interfaces.Repository;
+using Studmgt.Domain.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Studmgt.Application.Services
 {
-    class DepartmentService: IDepartmentService
+    public class DepartmentService: IDepartmentService
     {
         private readonly IDepartmentRepository _departmentRepository; 
         private readonly ILogger<DepartmentService> _logger;
-        public DepartmentService(IDepartmentRepository departmentRepository, ILogger<DepartmentService> logger)
+        private readonly IMapper _mapper;
+
+        public DepartmentService(IDepartmentRepository departmentRepository, ILogger<DepartmentService> logger, IMapper mapper)
         {
             _departmentRepository = departmentRepository;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<Guid> AddAsync(DepartmentEntity departmentEntity)
+        async Task<ResponseDto<DepartmentDto>> IDepartmentService.Create(DepartmentDto member)
         {
-            var model = departmentEntity.MapToModel();
-            var data = await _departmentRepository.AddAsync(model);
-            return data.Guid;
+            return new ResponseDto<DepartmentDto>(_mapper.Map<DepartmentDto>(await _departmentRepository.AddAsync(_mapper.Map<Department>(member))), true, "Member Created Successfully");
         }
 
-        public async Task DeleteDepartment(Guid guid)
+        ResponseDto<DepartmentDto> IDepartmentService.Update(DepartmentDto member)
         {
-            try
-            {
-                var department = await _departmentRepository.GetByIdAsync(guid);
-                if (department == null)
-                    throw new NotFoundException(nameof(department), guid);
-                await _departmentRepository.Delete(department);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-                throw;
-            }
+            return new ResponseDto<DepartmentDto>(member, _departmentRepository.Update(_mapper.Map<Department>(member)), "Member Updated Successfully");
         }
-    
 
-        public async Task<IEnumerable<DepartmentEntity>> GetAllDeparments()
+        ResponseDto<DepartmentDto> IDepartmentService.Delete(int id)
         {
-            var department = await _departmentRepository.GetAllAsync(); 
-            return department?.Select(o => new DepartmentEntity(o)).ToList();
+            return new ResponseDto<DepartmentDto>(_departmentRepository.Delete(id), "Member Deleted Successfully");
         }
 
-        public async Task<DepartmentEntity> GetByIdAsync(Guid guid)
+        async Task<ResponseDto<DepartmentDto>> IDepartmentService.GetById(int id)
         {
-            var department = await _departmentRepository.GetByIdAsync(guid);
-            return new DepartmentEntity(department);
+            return new ResponseDto<DepartmentDto>(_mapper.Map<DepartmentDto>(await _departmentRepository.GetByIdAsync(id)));
         }
 
-        public async Task<IEnumerable<DepartmentEntity>> GetDepartmentByName(string deptName)
+        async Task<ResponseDto<DepartmentDto>> IDepartmentService.GetAll()
         {
-            try
-            {
-                var department = (await _departmentRepository.GetQueryAsync(x => x.Name == deptName)).ToList();
-                return department?.Select(x => new DepartmentEntity(x));
-            }
-            catch (Exception e)
-            {
-
-                _logger.LogError($"Error Occured : {e.Message}");
-                return Enumerable.Empty<DepartmentEntity>();
-            }
+            return new ResponseDto<DepartmentDto>((await _departmentRepository.GetAllAsync()).Select(x => _mapper.Map<DepartmentDto>(x)).ToList());
         }
-        public async Task Update(DepartmentEntity departmentEntity)
-        {
-            try
-            {
-                await _departmentRepository.Update(departmentEntity.MapToModel());
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-            }
-        }
-
-       
     }
 }

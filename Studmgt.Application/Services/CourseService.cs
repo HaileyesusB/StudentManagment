@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Studmgt.Application.Common.Exceptions;
-using Studmgt.Domain.Entity;
-using Studmgt.Domain.Interfaces.Facade;
+using Studmgt.Application.Dtos;
+using Studmgt.Application.Interfaces.Facade;
 using Studmgt.Domain.Interfaces.Repository;
 using Studmgt.Domain.Model;
 using System;
@@ -9,81 +10,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Studmgt.Application.Features
+namespace Studmgt.Application.Services
 {
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository; 
         private readonly ILogger<CourseService> _logger;
-        public CourseService(ICourseRepository courseRepository, ILogger<CourseService> logger)
+        private readonly IMapper _mapper;
+
+        public CourseService(ICourseRepository courseRepository, ILogger<CourseService> logger, IMapper mapper)
         {
             _courseRepository = courseRepository;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<Guid> AddAsync(CourseEntity courseEntity)
+        async Task<ResponseDto<CourseDto>> ICourseService.GetById(int id)
         {
-            var model = courseEntity.MapToModel();
-            var data = await _courseRepository.AddAsync(model);
-            return data.Guid;
+            return new ResponseDto<CourseDto>(_mapper.Map<CourseDto>(await _courseRepository.GetByIdAsync(id)));
         }
 
-        public async Task DeleteCourse(Guid guid)
+        async Task<ResponseDto<CourseDto>> ICourseService.GetAll()
         {
-            try
-            {
-                var course = await _courseRepository.GetByIdAsync(guid);
-                if (course == null)
-                    throw new NotFoundException(nameof(course), guid);
-                await _courseRepository.Delete(course);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-                throw;
-            }
+            return new ResponseDto<CourseDto>((await _courseRepository.GetAllAsync()).Select(x => _mapper.Map<CourseDto>(x)).ToList());
         }
 
-        public async Task<IEnumerable<CourseEntity>> GetAllCourses()
+        async Task<ResponseDto<CourseDto>> ICourseService.Create(CourseDto member)
         {
-            var course = await _courseRepository.GetAllAsync();
-            return course?.Select(o => new CourseEntity(o)).ToList();
+            return new ResponseDto<CourseDto>(_mapper.Map<CourseDto>(await _courseRepository.AddAsync(_mapper.Map<Course>(member))), true, "Member Created Successfully");
         }
 
-        public async Task<CourseEntity> GetByIdAsync(Guid guid)
+        ResponseDto<CourseDto> ICourseService.Update(CourseDto member)
         {
-            var course = await _courseRepository.GetByIdAsync(guid);
-            return new CourseEntity(course);
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<CourseEntity>> GetCourseByCode(string courseCode)
+        ResponseDto<CourseDto> ICourseService.Delete(int id)
         {
-            try
-            {
-                var course = (await _courseRepository.GetQueryAsync(x => x.Name == courseCode)).ToList();
-                return course?.Select(x => new CourseEntity(x));
-            }
-            catch (Exception e)
-            {
-
-                _logger.LogError($"Error Occured : {e.Message}");
-                return Enumerable.Empty<CourseEntity>();
-            }
+            throw new NotImplementedException();
         }
-
-        public async Task Update(CourseEntity courseEntity)
-        {
-            try
-            {
-                await _courseRepository.Update(courseEntity.MapToModel());
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-            }
-        }
-        
-
     }
 }
 

@@ -1,95 +1,51 @@
-﻿using Microsoft.Extensions.Logging;
-using Studmgt.Application.Common.Exceptions;
-using Studmgt.Domain.Entity;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
+using Studmgt.Application.Dtos;
 using Studmgt.Domain.Interfaces.Facade;
 using Studmgt.Domain.Interfaces.Repository;
 using Studmgt.Domain.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Redzone.Application.Services
+namespace Studmgt.Application.Services
 {
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
         private readonly ILogger<StudentService> _logger;
-        public StudentService(IStudentRepository studentRepository,ILogger<StudentService> logger)
+        private readonly IMapper _mapper;
+
+        public StudentService(IStudentRepository studentRepository, ILogger<StudentService> logger, IMapper mapper)
         {
             _studentRepository = studentRepository;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<Guid> AddAsync(studentEntity studentEntity)
+        async Task<ResponseDto<StudentDto>> IStudentService.Create(StudentDto member)
         {
-            var model = studentEntity.MapToModel();
-            var data = await _studentRepository.AddAsync(model);
-            return data.Guid;
+            return new ResponseDto<StudentDto>(_mapper.Map<StudentDto>(await _studentRepository.AddAsync(_mapper.Map<Student>(member))), true, "Member Created Successfully");
         }
 
-        public async Task Update(studentEntity studentEntity) 
+        ResponseDto<StudentDto> IStudentService.Update(StudentDto member)
         {
-            try
-            {
-                await _studentRepository.Update(studentEntity.MapToModel());
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-            }
+            throw new NotImplementedException();
         }
 
-        public async Task DeleteStudent(Guid guid)
+        ResponseDto<StudentDto> IStudentService.Delete(int id)
         {
-            try
-            {
-                var student = await _studentRepository.GetByIdAsync(guid);
-                if (student == null)
-                    throw new NotFoundException(nameof(Student), guid);
-                await _studentRepository.Delete(student);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Error Occured : {e.Message}");
-                throw;
-            }
+            throw new NotImplementedException();
         }
 
-        //public Task<studentEntity> UpdateStudent(studentEntity student)
-        //{
-        //    Student studentModel = student.MapToModel();
-
-        //    return (Task<studentEntity>)_studentRepository.Update(studentModel);
-        //}
-
-        public async Task<IEnumerable<studentEntity>> GetAllStudents()
+        async Task<ResponseDto<StudentDto>> IStudentService.GetById(int id)
         {
-            var student = await _studentRepository.GetAllAsync();
-            return student?.Select(o => new studentEntity(o)).ToList();
+            return new ResponseDto<StudentDto>(_mapper.Map<StudentDto>(await _studentRepository.GetByIdAsync(id)));
         }
 
-        public async Task<studentEntity> GetByIdAsync(Guid guid)
+        async Task<ResponseDto<StudentDto>> IStudentService.GetAll()
         {
-            var course = await _studentRepository.GetByIdAsync(guid);
-            return new studentEntity(course);
+            return new ResponseDto<StudentDto>((await _studentRepository.GetAllAsync()).Select(x => _mapper.Map<StudentDto>(x)).ToList());
         }
-
-        public async Task<IEnumerable<studentEntity>> GetStudentByName(string studName) 
-        {
-            try
-            {
-                var course = (await _studentRepository.GetQueryAsync(x => x.Name == studName)).ToList();
-                return course?.Select(x => new studentEntity(x));
-            }
-            catch (Exception e)
-            {
-
-                _logger.LogError($"Error Occured : {e.Message}");
-                return Enumerable.Empty<studentEntity>();
-            }
-        }
-
-      
     }
 }
